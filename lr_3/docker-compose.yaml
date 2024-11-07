@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     command: >
-      sh -c "python init_test_db.py && uvicorn jwt:app --host 0.0.0.0 --port 8000"
+      sh -c "python init_db/init_test_db.py && uvicorn jwt:app --host 0.0.0.0 --port 8000"
     volumes:
       - .:/app
 

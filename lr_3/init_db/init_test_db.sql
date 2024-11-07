@@ -1,4 +1,3 @@
-BEGIN;
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -25,10 +24,10 @@ CREATE TABLE IF NOT EXISTS files (
     CONSTRAINT unique_name_folder UNIQUE (name, folder_id)
 );
 CREATE INDEX IF NOT EXISTS idx_filename ON files(name);
-COMMIT;
 
 INSERT INTO users (username, first_name, last_name, email, password) VALUES 
-('admin', 'admin', 'admin', 'admin@example.com', '$2b$12$DFKswboZoqOSSKQn78yZMe87qgAMHsUZ.Zvqs98MIqbraZgfZeTdS');
+('admin', 'admin', 'admin', 'admin@example.com', '$2b$12$DFKswboZoqOSSKQn78yZMe87qgAMHsUZ.Zvqs98MIqbraZgfZeTdS')
+ON CONFLICT DO NOTHING;
 
 INSERT INTO users (username, first_name, last_name, email, password) VALUES 
 ('user1', 'John', 'Doe', 'john.doe@example.com', '$2b$12$DFKswboZoqOSSKQn78yZMe87qgAMHsUZ.Zvqs98MIqbraZgfZeTdS'),
@@ -50,7 +49,8 @@ INSERT INTO users (username, first_name, last_name, email, password) VALUES
 ('user17', 'Oscar', 'Martinez', 'oscar.martinez@example.com', '$2b$12$DFKswboZoqOSSKQn78yZMe87qgAMHsUZ.Zvqs98MIqbraZgfZeTdS'),
 ('user18', 'Paul', 'Davis', 'paul.davis@example.com', '$2b$12$DFKswboZoqOSSKQn78yZMe87qgAMHsUZ.Zvqs98MIqbraZgfZeTdS'),
 ('user19', 'Quincy', 'Lopez', 'quincy.lopez@example.com', '$2b$12$DFKswboZoqOSSKQn78yZMe87qgAMHsUZ.Zvqs98MIqbraZgfZeTdS'),
-('user20', 'Rachel', 'Gonzalez', 'rachel.gonzalez@example.com', '$2b$12$DFKswboZoqOSSKQn78yZMe87qgAMHsUZ.Zvqs98MIqbraZgfZeTdS');
+('user20', 'Rachel', 'Gonzalez', 'rachel.gonzalez@example.com', '$2b$12$DFKswboZoqOSSKQn78yZMe87qgAMHsUZ.Zvqs98MIqbraZgfZeTdS')
+ON CONFLICT DO NOTHING;
 
 INSERT INTO folders (name, creator_id) VALUES
 ('Documents', 1), 
@@ -72,7 +72,8 @@ INSERT INTO folders (name, creator_id) VALUES
 ('Family', 14),
 ('Finance', 15),
 ('Vacation', 16),
-('Workouts', 17);
+('Workouts', 17)
+ON CONFLICT DO NOTHING;
 
 INSERT INTO files (name, folder_id) VALUES
 ('resume.pdf', 1),
@@ -94,4 +95,5 @@ INSERT INTO files (name, folder_id) VALUES
 ('family_tree.jpg', 17),
 ('finance_plan.xlsx', 18),
 ('vacation_plans.docx', 19),
-('workout_schedule.xlsx', 20);
+('workout_schedule.xlsx', 20)
+ON CONFLICT DO NOTHING;

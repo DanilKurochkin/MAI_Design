@@ -9,7 +9,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 from pydantic import BaseModel
 
-import models as md
+import models.models as md
 
 # Секретный ключ для подписи JWT
 SECRET_KEY = "your-secret-key"
