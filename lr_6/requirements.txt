@@ -1,0 +1,14 @@
+fastapi
+pydantic
+uvicorn[standard]
+sqlalchemy
+pandas
+psycopg2-binary
+redis
+pymongo
+pyjwt
+python-jose[cryptography] 
+passlib[bcrypt]
+python-multipart
+confluent-kafka
+kafka-python
